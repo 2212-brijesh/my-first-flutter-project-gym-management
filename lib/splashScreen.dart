@@ -1,6 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:gym_management/intro_slider.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:page_transition/page_transition.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -8,21 +11,31 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreenState extends State<SplashScreen>
+    with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    Timer(
-        Duration(seconds: 6),
-        () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) => IntroSlider())));
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Container(child: Center(child:Image.asset('assets/images/strength.png',width: 100,height: 150,))),
+    return AnimatedSplashScreen(
+      splash: Column(
+        children: [
+          Image.asset('assets/images/splash1.png'),
+          const Text(
+            'Gym Manager app',
+            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+          )
+        ],
+      ),
+      nextScreen: IntroSlider(),
+      splashIconSize: 400,
+      backgroundColor: Colors.amberAccent.shade100,
+      duration: 3000,
+      splashTransition: SplashTransition.sizeTransition,
+      pageTransitionType: PageTransitionType.leftToRight,
     );
   }
 }

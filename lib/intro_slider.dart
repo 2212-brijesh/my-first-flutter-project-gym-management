@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:gym_management/indicator.dart';
 import 'package:gym_management/pages/loginscreen.dart';
+import 'package:gym_management/pages/signup.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class IntroSlider extends StatefulWidget {
@@ -39,7 +40,8 @@ class _IntroSliderState extends State<IntroSlider> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            TextButton(onPressed: () {}, child: const Text('Sign Up')),
+            TextButton(onPressed: () {   Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SignUp()));}, child: const Text('Sign Up')),
             Center(child: SmoothPageIndicator(controller: controller,count: 3,effect: WormEffect(spacing: 16,dotColor: Colors.black54,activeDotColor: Colors.teal.shade700),onDotClicked: (index) => controller.animateToPage(index, duration:const Duration(milliseconds: 500), curve: Curves.easeIn),),),
             TextButton(onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder:(context) => const LoginScreen() ));
