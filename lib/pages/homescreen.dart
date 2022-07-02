@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gym_management/gridcardpages/addmembers.dart';
 import 'package:gym_management/gridcardpages/addtrainer.dart';
 import 'package:gym_management/gridcardpages/enquiry.dart';
+import 'package:gym_management/gridcardpages/memberslist.dart';
 import 'package:gym_management/gridcardpages/packages.dart';
 import 'package:gym_management/gridcardpages/payments.dart';
 import 'package:gym_management/pages/account.dart';
@@ -72,19 +73,27 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              Card(
-                elevation: 5,
-                child: Container(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset('assets/images/membersicon.png'),
-                      Text(
-                        'Members',
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      )
-                    ],
+              InkWell(
+                highlightColor: Colors.orange.withOpacity(0.9),
+                splashColor: Colors.amber.withOpacity(0.9),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => MembersList()));
+                },
+                child: Card(
+                  elevation: 5,
+                  child: Container(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset('assets/images/membersicon.png'),
+                        Text(
+                          'Members',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -252,7 +261,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => AddTrainer()));
-                },                
+                },
                 child: Card(
                   elevation: 5,
                   child: Container(

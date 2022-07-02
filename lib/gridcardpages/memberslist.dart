@@ -10,7 +10,7 @@ class MembersList extends StatefulWidget {
 class _MembersListState extends State<MembersList> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: Text('Memmbers'),),
+    return Scaffold(appBar: AppBar(title: Text('Members'),),
     body: Center(child: Text(''),),
     );
   }
