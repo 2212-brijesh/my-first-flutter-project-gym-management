@@ -8,6 +8,8 @@ class CreatePayment extends StatefulWidget {
 }
 
 class _CreatePaymentState extends State<CreatePayment> {
+  List<String> items = ['CASH', 'ONLINE', 'CHEQUE'];
+  String? dropdownValue = 'CASH';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +18,8 @@ class _CreatePaymentState extends State<CreatePayment> {
       ),
       body: SingleChildScrollView(
         child: Column(
-          children:  [
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
             SizedBox(
               height: 20,
             ),
@@ -24,8 +27,8 @@ class _CreatePaymentState extends State<CreatePayment> {
               decoration: InputDecoration(
                 hintText: 'Customer Name',
                 labelText: 'Customer Name',
-                  border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20)),
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
               ),
             ),
             SizedBox(
@@ -35,8 +38,8 @@ class _CreatePaymentState extends State<CreatePayment> {
               decoration: InputDecoration(
                 hintText: 'Email',
                 labelText: 'Email',
-                  border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20)),
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
               ),
             ),
             SizedBox(
@@ -46,8 +49,8 @@ class _CreatePaymentState extends State<CreatePayment> {
               decoration: InputDecoration(
                 hintText: 'Package Name',
                 labelText: 'Package Name',
-                  border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20)),
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
               ),
             ),
             SizedBox(
@@ -57,25 +60,45 @@ class _CreatePaymentState extends State<CreatePayment> {
               decoration: InputDecoration(
                 hintText: 'Amount',
                 labelText: 'Amount',
-                  border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20)),
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
               ),
             ),
             SizedBox(
               height: 20,
             ),
-            TextField(
-              decoration: InputDecoration(
-                hintText: 'Payment Type',
-                labelText: 'Payment Type',
-                  border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20)),
-              ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  'Payment Type :-',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                DropdownButton<String>(
+                    value: dropdownValue,
+                    items: items.map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        dropdownValue = newValue!;
+                      });
+                      dropdownValue = newValue!;
+                    }),
+              ],
             ),
-                      SizedBox(
+            SizedBox(
               height: 20,
             ),
-            ElevatedButton(onPressed: () {}, child: Text('Save'))
+            Center(child: ElevatedButton(onPressed: () {}, child: Text('Save')))
           ],
         ),
       ),
