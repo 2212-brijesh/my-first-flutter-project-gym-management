@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym_management/gridcardpages/trainerlist.dart';
 
 class AddTrainer extends StatefulWidget {
   const AddTrainer({Key? key}) : super(key: key);
@@ -8,51 +9,98 @@ class AddTrainer extends StatefulWidget {
 }
 
 class _AddTrainerState extends State<AddTrainer> {
+  var _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Add New Trainer'),),
+      appBar: AppBar(
+        title: Text('Add New Trainer'),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(15.0),
-          child: Column(
-            children: [
-                          Center(
-                child: Image.asset(
-                  'assets/images/addnewtrainericon.png',
-                  height: 220,
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                Center(
+                  child: Image.asset(
+                    'assets/images/addnewtrainericon.png',
+                    height: 220,
+                  ),
                 ),
-              ),
-            SizedBox(height: 20,),
-             TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Trainer ID',
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20)),
-                      labelText: 'Trainer ID',
-                    ),
+                SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  decoration: InputDecoration(
+                    hintText: 'Trainer ID',
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    labelText: 'Trainer ID',
                   ),
-            SizedBox(height: 20,),
-             TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Name',
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20)),
-                      labelText: 'Name',
-                    ),
+                  keyboardType: TextInputType.number,
+                  onFieldSubmitted: (value) {},
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Enter a Trainer ID';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  decoration: InputDecoration(
+                    hintText: 'Trainer Name',
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    labelText: 'Trainer Name',
                   ),
-            SizedBox(height: 20,),
-             TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Phone',
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20)),
-                      labelText: 'Phone',
-                    ),
+                  keyboardType: TextInputType.name,
+                  onFieldSubmitted: (value) {},
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Enter a Trainer Name';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  decoration: InputDecoration(
+                    hintText: 'Phone',
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    labelText: 'Phone',
                   ),
-                  SizedBox(height: 20,),
-                  ElevatedButton(onPressed: () {}, child: Text('Save')),
-          ],),
+                  keyboardType: TextInputType.number,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Enter a Trainer Number';
+                    }
+                    return null;
+                  },                  
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                ElevatedButton(onPressed: () {
+                  final isValidForm = _formKey.currentState!.validate();
+                  if (isValidForm) {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => const TrainerList(),
+                      ),
+                    );
+                  }                  
+                }, child: Text('Save')),
+              ],
+            ),
+          ),
         ),
       ),
     );

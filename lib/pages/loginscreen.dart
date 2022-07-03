@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:gym_management/pages/homebottomNavigationbar.dart';
 import 'package:gym_management/pages/homescreen.dart';
 import 'package:gym_management/pages/signup.dart';
@@ -22,114 +23,98 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: Container(
-        height: height,
-        width: width,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SingleChildScrollView(
-            child: Form(
-              key: _formKey,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    child: Image.asset(
-                      'assets/images/login.gif',
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: const [
-                        Text(
-                          'Login',
-                          style: TextStyle(
-                              fontSize: 25.0, fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20.0,
-                  ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      hintText: 'Email',
-                      suffixIcon: Icon(Icons.email),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20.0)),
-                    ),
-                    keyboardType: TextInputType.emailAddress,
-                    onFieldSubmitted: (value) {
-                      //Validator
-                    },
-                    validator: (value) {
-                      if (value!.isEmpty ||
-                          !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                              .hasMatch(value)) {
-                        return 'Enter a valid email!';
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(
-                    height: 17,
-                  ),
-                  TextFormField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                        hintText: 'Password',
-                        suffixIcon: Icon(Icons.visibility_off),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0))),
-                    keyboardType: TextInputType.emailAddress,
-                     validator: (value) {
-                      if (value!.isEmpty ||
-                          !RegExp(r"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$")
-                              .hasMatch(value)) {
-                        return 'Please Enter Your Password';
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(
-                    height: 18.0,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              child: Text(
-                                'Forget password',
-                                style: TextStyle(fontSize: 12.0),
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                  primary: Colors.yellow.shade100,
-                                  onPrimary: Colors.black54,
-                                  elevation: 5,
-                                  shadowColor: Colors.blue,
-                                  textStyle: TextStyle(
-                                      color: Colors.white, fontSize: 20)),
-                            ),
-                          ),
+      body: SingleChildScrollView(
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: <Widget>[
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.55,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage(
+                          'assets/images/backgroungimage.jpg',
                         ),
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ElevatedButton(
-                              onPressed: () {
+                        fit: BoxFit.cover)),
+                child: Stack(
+                  children: [
+                    Positioned(
+                        left: 30.0,
+                        bottom: 20.0,
+                        child: Text(
+                          'Login',
+                          style: GoogleFonts.caveat(
+                              color: Colors.white,
+                              fontSize: 42.0,
+                              letterSpacing: 1.5,
+                              fontWeight: FontWeight.w600),
+                        ))
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 12,
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 25.0),
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    TextFormField(
+                      decoration: InputDecoration(
+                        hintText: 'Email',
+                        suffixIcon: Icon(
+                          Icons.email,
+                          color: Colors.black,
+                        ),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20.0)),
+                      ),
+                      keyboardType: TextInputType.emailAddress,
+                      onFieldSubmitted: (value) {
+                        //Validator
+                      },
+                      validator: (value) {
+                        if (value!.isEmpty ||
+                            !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                .hasMatch(value)) {
+                          return 'Enter a valid email!';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(
+                      height: 17,
+                    ),
+                    TextFormField(
+                      obscureText: true,
+                      decoration: InputDecoration(
+                          hintText: 'Password',
+                          suffixIcon: Icon(
+                            Icons.visibility_off,
+                            color: Colors.black,
+                          ),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0))),
+                      keyboardType: TextInputType.emailAddress,
+                      validator: (value) {
+                        if (value!.isEmpty ||
+                            !RegExp(r"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$")
+                                .hasMatch(value)) {
+                          return 'Please Enter Your Password';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(
+                      height: 17,
+                    ),
+                    GestureDetector(
+                      onTap: () {
                                 final isValidForm =
                                     _formKey.currentState!.validate();
                                 if (isValidForm) {
@@ -140,42 +125,51 @@ class _LoginScreenState extends State<LoginScreen> {
                                     ),
                                   );
                                 }
-                              },
-                              child: Text('Login'),
-                              style: ElevatedButton.styleFrom(
-                                  primary: Colors.yellow.shade100,
-                                  onPrimary: Colors.black54,
-                                  elevation: 5,
-                                  shadowColor: Colors.blue,
-                                  textStyle: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                  )),
+                      },
+                      child: Container(
+                        height: 50.0,
+                        decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: <Color>[
+                                Color(0xff141314),
+                                Color(0xFF3b3841)
+                              ],
+                            ),
+                            borderRadius: BorderRadius.circular(50.0)),
+                        child: const Center(
+                          child: Text(
+                            'Login',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                              fontSize: 18.0,
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height: 20.0,
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => SignUp()));
-                    },
-                    child: Text.rich(TextSpan(
-                        text: 'Don\'t have an account',
-                        children: [
-                          TextSpan(
-                              text: 'Signup',
-                              style: TextStyle(color: Color(0xffEE7B23)))
-                        ])),
-                  ),
-                ],
+                    const SizedBox(
+                      height: 17,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => SignUp()));
+                      },
+                      child: Text.rich(TextSpan(
+                          text: 'Don\'t have an account',
+                          children: [
+                            TextSpan(
+                                text: 'Signup',
+                                style: TextStyle(color: Color(0xffEE7B23)))
+                          ])),
+                    ),
+                  ],
+                ),
               ),
-            ),
+            ],
           ),
         ),
       ),

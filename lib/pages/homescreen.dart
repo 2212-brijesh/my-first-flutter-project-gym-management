@@ -1,12 +1,15 @@
+import 'dart:io';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_management/gridcardpages/addmembers.dart';
 import 'package:gym_management/gridcardpages/addtrainer.dart';
 import 'package:gym_management/gridcardpages/enquiry.dart';
+import 'package:gym_management/gridcardpages/enquirylist.dart';
 import 'package:gym_management/gridcardpages/memberslist.dart';
 import 'package:gym_management/gridcardpages/packages.dart';
 import 'package:gym_management/gridcardpages/payments.dart';
+import 'package:gym_management/gridcardpages/trainerlist.dart';
 import 'package:gym_management/pages/account.dart';
-import 'package:gym_management/pages/dashboard.dart';
 import 'package:gym_management/pages/homebottomNavigationbar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,272 +23,208 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Container(
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: GridView(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
-                childAspectRatio: 3 / 2),
+        appBar: AppBar(
+          title: Text('Home'),
+          //    actions: [
+          //   IconButton(
+          //     onPressed: () {},
+          //     icon: Icon(Platform.isAndroid ? Icons.more_vert : Icons.more_horiz),
+          //   ),
+          // ],
+        ),
+        endDrawer: Drawer(
+          child: ListView(
             children: [
-              Card(
-                elevation: 5,
-                child: Container(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset('assets/images/scanicon.png'),
-                      Text(
-                        'Scan',
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      )
-                    ],
-                  ),
-                ),
+              DrawerHeader(
+                child: Text(''),
               ),
-              InkWell(
-                highlightColor: Colors.orange.withOpacity(0.9),
-                splashColor: Colors.amber.withOpacity(0.9),
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => AddMembers()));
-                },
-                child: Card(
-                  elevation: 5,
-                  child: Ink(
-                    child: Container(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset('assets/images/addmembericon1.png'),
-                          Text(
-                            'Add member',
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
+              ListTile(
+                leading: Icon(
+                  Icons.share,
+                  color: Colors.blueAccent,
                 ),
+                title: Text(
+                  'Share',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onTap: () {},
               ),
-              InkWell(
-                highlightColor: Colors.orange.withOpacity(0.9),
-                splashColor: Colors.amber.withOpacity(0.9),
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => MembersList()));
-                },
-                child: Card(
-                  elevation: 5,
-                  child: Container(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset('assets/images/membersicon.png'),
-                        Text(
-                          'Members',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
-                  ),
+              ListTile(
+                leading: Icon(
+                  Icons.contact_mail,
+                  color: Colors.blueAccent,
                 ),
+                title: Text(
+                  'Contact us',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onTap: () {},
               ),
-              InkWell(
-                highlightColor: Colors.orange.withOpacity(0.9),
-                splashColor: Colors.amber.withOpacity(0.9),
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Packages()));
-                },
-                child: Card(
-                  elevation: 5,
-                  child: Container(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset('assets/images/planicon.png'),
-                        Text(
-                          'Package',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
-                  ),
+              ListTile(
+                leading: Icon(
+                  Icons.view_list,
+                  color: Colors.blueAccent,
                 ),
+                title: Text(
+                  'Terms & Conditons',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onTap: () {},
               ),
-              // Card(
-              //   elevation: 5,
-              //   child: Container(
-              //     child: Column(
-              //       mainAxisAlignment: MainAxisAlignment.center,
-              //       children: [
-              //         Image.asset('assets/images/attendanceicon.png'),
-              //         Text(
-              //           'Attendance',
-              //           style: TextStyle(
-              //               fontSize: 20, fontWeight: FontWeight.bold),
-              //         )
-              //       ],
-              //     ),
-              //   ),
-              // ),
-              // Card(
-              //   elevation: 5,
-              //   child: Container(
-              //     child: Column(
-              //       mainAxisAlignment: MainAxisAlignment.center,
-              //       children: [
-              //         Image.asset('assets/images/savenotesicon.png'),
-              //         Text(
-              //           'Save Notes',
-              //           style: TextStyle(
-              //               fontSize: 20, fontWeight: FontWeight.bold),
-              //         )
-              //       ],
-              //     ),
-              //   ),
-              // ),
-              // Card(
-              //   elevation: 5,
-              //   child: Container(
-              //     child: Column(
-              //       mainAxisAlignment: MainAxisAlignment.center,
-              //       children: [
-              //         Image.asset('assets/images/batchicon.png'),
-              //         Text(
-              //           'Batch',
-              //           style: TextStyle(
-              //               fontSize: 20, fontWeight: FontWeight.bold),
-              //         )
-              //       ],
-              //     ),
-              //   ),
-              // ),
-              // Card(
-              //   elevation: 5,
-              //   child: Container(
-              //     child: Column(
-              //       mainAxisAlignment: MainAxisAlignment.center,
-              //       children: [
-              //         Image.asset('assets/images/reporticon.png'),
-              //         Text(
-              //           'Reports',
-              //           style: TextStyle(
-              //               fontSize: 20, fontWeight: FontWeight.bold),
-              //         )
-              //       ],
-              //     ),
-              //   ),
-              // ),
-              InkWell(
-                highlightColor: Colors.orange.withOpacity(0.9),
-                splashColor: Colors.amber.withOpacity(0.9),
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Enquiry()));
-                },
-                child: Card(
-                  elevation: 5,
-                  child: Container(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset('assets/images/enquiryicon.png'),
-                        Text(
-                          'Enquiry',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
-                  ),
+              ListTile(
+                leading: Icon(
+                  Icons.person_search_sharp,
+                  color: Colors.blueAccent,
                 ),
+                title: Text(
+                  'Privacy Policy',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onTap: () {},
               ),
-              InkWell(
-                highlightColor: Colors.orange.withOpacity(0.9),
-                splashColor: Colors.amber.withOpacity(0.9),
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Payments()));
-                },
-                child: Card(
-                  elevation: 5,
-                  child: Container(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'assets/images/expenseicon.png',
-                          height: 60,
-                        ),
-                        Text(
-                          'Payments',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
-                  ),
+              ListTile(
+                leading: Icon(
+                  Icons.logout,
+                  color: Colors.blueAccent,
                 ),
-              ),
-              Card(
-                elevation: 5,
-                child: Container(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        'assets/images/trainericon.png',
-                        height: 60,
-                      ),
-                      Text(
-                        'Trainer',
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      )
-                    ],
-                  ),
+                title: Text(
+                  'Log out',
+                  style: TextStyle(color: Colors.white),
                 ),
-              ),
-              InkWell(
-                highlightColor: Colors.orange.withOpacity(0.9),
-                splashColor: Colors.amber.withOpacity(0.9),
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => AddTrainer()));
-                },
-                child: Card(
-                  elevation: 5,
-                  child: Container(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'assets/images/addtrainericon.png',
-                          height: 60,
-                        ),
-                        Text(
-                          'Add Trainer',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
+                onTap: () {},
               ),
             ],
           ),
         ),
-      ),
-    );
+        body: Container(
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AddMembers()));
+                    },
+                    child: Card(
+                      child: Container(
+                        height: 140,
+                        child: Row(
+                          children: [
+                            Center(
+                              child: Padding(
+                                padding: EdgeInsets.all(15),
+                                child: Expanded(
+                                  child: Container(
+                                    decoration: BoxDecoration(gradient: LinearGradient(colors: [Colors.white12,Colors.white24])),
+                                    child: Image.asset(
+                                      'assets/images/amembericon.png',height: 50,
+                                    ),
+                                  ),
+                                  flex: 2,
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                                child: Container(
+                              padding: EdgeInsets.only(left: 24),
+                              child: ListTile(
+                                title: Text('Add member',
+                                    style: GoogleFonts.caveat(
+                                        fontSize: 35,
+                                        fontWeight: FontWeight.bold)),
+                              ),
+                            )),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MembersList()));
+                    },
+                    child: Card(
+                      child: Container(
+                        height: 140,
+                        child: Row(
+                          children: [
+                            Center(
+                              child: Padding(
+                                padding: EdgeInsets.all(15),
+                                child: Expanded(
+                                  child: Image.asset(
+                                    'assets/images/membersicon.png',
+                                  ),
+                                  flex: 2,
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                                child: Container(
+                              padding: EdgeInsets.only(left: 24),
+                              child: ListTile(
+                                title: Text('Members',
+                                    style: GoogleFonts.caveat(
+                                        fontSize: 35,
+                                        fontWeight: FontWeight.bold)),
+                              ),
+                            )),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Packages()));
+                    },
+                    child: Card(
+                      child: Container(
+                        height: 140,
+                        child: Row(
+                          children: [
+                            Center(
+                              child: Padding(
+                                padding: EdgeInsets.all(15),
+                                child: Expanded(
+                                  child: Image.asset(
+                                    'assets/images/planicon.png',
+                                  ),
+                                  flex: 2,
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                                child: Container(
+                              padding: EdgeInsets.only(left: 24),
+                              child: ListTile(
+                                title: Text('Package',
+                                    style: GoogleFonts.caveat(
+                                        fontSize: 35,
+                                        fontWeight: FontWeight.bold)),
+                              ),
+                            )),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+
+
+                ],
+              ),
+            ),
+          ),
+        ));
   }
 }

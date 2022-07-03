@@ -10,6 +10,11 @@ class Account extends StatefulWidget {
 class _AccountState extends State<Account> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: Text('Account'),),);
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('About us'),
+      ),
+      body: Card(),
+    );
   }
 }

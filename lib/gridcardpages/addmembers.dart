@@ -13,6 +13,8 @@ class AddMembers extends StatefulWidget {
 class _AddMembersState extends State<AddMembers> {
   @override
   Widget build(BuildContext context) {
+    List<String> items = ['Weight loss', 'Weight gain', 'Muscle'];
+    String? dropdownValue = 'Weight loss';
     var _formKey = GlobalKey<FormState>();
     String _selectedGender = 'male';
     TextEditingController _date = TextEditingController();
@@ -50,238 +52,200 @@ class _AddMembersState extends State<AddMembers> {
       body: SingleChildScrollView(
         child: Form(
           key: _formKey,
-          child: Column(
-            children: [
-              Center(
-                child: Image.asset(
-                  'assets/images/ampersonicon.png',
-                  height: 120,
-                ),
-              ),
-              OutlinedButton.icon(
-                onPressed: () {},
-                icon: Icon(Icons.camera),
-                label: Text('ADD PHOTO'),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Member name',
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                  labelText: 'Member name',
-                ),
-                keyboardType: TextInputType.name,
-                onFieldSubmitted: (value) {},
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Enter a Member name';
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Member id',
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                  labelText: 'Member id',
-                ),
-                keyboardType: TextInputType.number,
-                onFieldSubmitted: (value) {},
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Enter a Member id';
-                  }
-                  return null;
-                },                
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Mobile Number',
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                  labelText: 'Mobile Number',
-                ),
-                keyboardType: TextInputType.number,
-                onFieldSubmitted: (value) {},
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Enter a Mobile Number';
-                  }
-                  return null;
-                },                
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Email Address',
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                  labelText: 'Email Address',
-                ),
-                keyboardType: TextInputType.emailAddress,
-                validator: (value) {
-                  if (value!.isEmpty ||
-                      !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                          .hasMatch(value)) {
-                    return 'Enter a valid email!';
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(
-                height: 16,
-              ),
-              TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Address',
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                  labelText: 'Address',
-                ),
-                keyboardType: TextInputType.streetAddress,
-              ),
-              SizedBox(
-                height: 22,
-              ),
-              StatefulBuilder(builder: (context, setState) {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(left: 35),
-                      child: Text(
-                        'Gender :-',
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    ListTile(
-                      leading: Radio<String>(
-                        value: 'male',
-                        groupValue: _selectedGender,
-                        onChanged: (value) {
-                          setState(() {
-                            _selectedGender = value!;
-                          });
-                        },
-                      ),
-                      title: const Text('Male'),
-                    ),
-                    ListTile(
-                      leading: Radio<String>(
-                        value: 'female',
-                        groupValue: _selectedGender,
-                        onChanged: (value) {
-                          setState(() {
-                            _selectedGender = value!;
-                          });
-                        },
-                      ),
-                      title: const Text('Female'),
-                    ),
-                    ListTile(
-                      leading: Radio<String>(
-                        value: 'other',
-                        groupValue: _selectedGender,
-                        onChanged: (value) {
-                          setState(() {
-                            _selectedGender = value!;
-                          });
-                        },
-                      ),
-                      title: const Text('Other'),
-                    ),
-                  ],
-                );
-              }),
-              Padding(
-                padding: const EdgeInsets.only(
-                    left: 30, right: 30, top: 8, bottom: 15),
-                child: TextFormField(
-                  controller: _date,
-                  decoration: const InputDecoration(
-                    icon: Icon(Icons.calendar_today_rounded),
-                    labelText: "Join date",
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              children: [
+                Center(
+                  child: Image.asset(
+                    'assets/images/ampersonicon.png',
+                    height: 120,
                   ),
-                  onTap: () async {
-                    DateTime? pickeddate = await showDatePicker(
-                        context: context,
-                        initialDate: DateTime.now(),
-                        firstDate: DateTime(2000),
-                        lastDate: DateTime(2101));
-
-                    if (pickeddate != null) {
-                      setState(() {
-                        _date.text =
-                            DateFormat('yyyy-MM-dd').format(pickeddate);
-                        print(_date);
-                      });
-                    }
-                  },
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Select a Jion date';
-                  }
-                  return null;
-                },                   
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                    left: 30, right: 30, top: 8, bottom: 15),
-                child: TextFormField(
-                  controller: _dateone,
-                  decoration: const InputDecoration(
-                    icon: Icon(Icons.calendar_today_rounded),
-                    labelText: "Date of Birth",
-                  ),
-                  onTap: () async {
-                    DateTime? pickeddate = await showDatePicker(
-                        context: context,
-                        initialDate: DateTime.now(),
-                        firstDate: DateTime(2000),
-                        lastDate: DateTime(2101));
-
-                    if (pickeddate != null) {
-                      setState(() {
-                        _date.text =
-                            DateFormat('yyyy-MM-dd').format(pickeddate);
-                        print(_date);
-                      });
-                    }
-                  },
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Select a Date of Birth';
-                  }
-                  return null;
-                }, 
+                // OutlinedButton.icon(
+                //   onPressed: () {},
+                //   icon: Icon(Icons.camera),
+                //   label: Text('ADD PHOTO'),
+                // ),
+                SizedBox(
+                  height: 15,
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 30, right: 30),
-                child: TextFormField(
+                TextFormField(
                   decoration: InputDecoration(
-                    hintText: 'Add more details here',
+                    hintText: 'Member name',
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20)),
-                    labelText: 'Add more details here',
+                    labelText: 'Member name',
+                  ),
+                  keyboardType: TextInputType.name,
+                  onFieldSubmitted: (value) {},
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Enter a Member name';
+                    }
+                    return null;
+                  },
+                ),
+                // SizedBox(
+                //   height: 15,
+                // ),
+                // TextFormField(
+                //   decoration: InputDecoration(
+                //     hintText: 'Member id',
+                //     border: OutlineInputBorder(
+                //         borderRadius: BorderRadius.circular(20)),
+                //     labelText: 'Member id',
+                //   ),
+                //   keyboardType: TextInputType.number,
+                //   onFieldSubmitted: (value) {},
+                //   validator: (value) {
+                //     if (value!.isEmpty) {
+                //       return 'Enter a Member id';
+                //     }
+                //     return null;
+                //   },
+                // ),
+                SizedBox(
+                  height: 15,
+                ),
+                TextFormField(
+                  decoration: InputDecoration(
+                    hintText: 'Mobile Number',
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    labelText: 'Mobile Number',
+                  ),
+                  keyboardType: TextInputType.number,
+                  onFieldSubmitted: (value) {},
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Enter a Mobile Number';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                TextFormField(
+                  decoration: InputDecoration(
+                    hintText: 'Email Address',
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    labelText: 'Email Address',
+                  ),
+                  keyboardType: TextInputType.emailAddress,
+                  validator: (value) {
+                    if (value!.isEmpty ||
+                        !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                            .hasMatch(value)) {
+                      return 'Enter a valid email!';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(
+                  height: 16,
+                ),
+                StatefulBuilder(builder: (context, setState) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(left: 35),
+                        child: Text(
+                          'Gender :-',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      ListTile(
+                        leading: Radio<String>(
+                          value: 'male',
+                          groupValue: _selectedGender,
+                          onChanged: (value) {
+                            setState(() {
+                              _selectedGender = value!;
+                            });
+                          },
+                        ),
+                        title: const Text('Male'),
+                      ),
+                      ListTile(
+                        leading: Radio<String>(
+                          value: 'female',
+                          groupValue: _selectedGender,
+                          onChanged: (value) {
+                            setState(() {
+                              _selectedGender = value!;
+                            });
+                          },
+                        ),
+                        title: const Text('Female'),
+                      ),
+                      ListTile(
+                        leading: Radio<String>(
+                          value: 'other',
+                          groupValue: _selectedGender,
+                          onChanged: (value) {
+                            setState(() {
+                              _selectedGender = value!;
+                            });
+                          },
+                        ),
+                        title: const Text('Other'),
+                      ),
+                    ],
+                  );
+                }),
+                SizedBox(
+                  height: 17,
+                ),
+                              Row(
+                children: [
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    'Package :-',
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  DropdownButton<String>(
+                      value: dropdownValue,
+                      items:
+                          items.map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          dropdownValue = newValue!;
+                        });
+                        dropdownValue = newValue!;
+                      }),
+                ],
+              ),
+                SizedBox(
+                  height: 17,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 30, right: 30),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: 'Add more details here',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      labelText: 'Add more details here',
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
