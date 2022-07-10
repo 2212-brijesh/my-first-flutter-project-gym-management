@@ -42,6 +42,11 @@ dependencies:
   provider: ^6.0.3
   shared_preferences: ^2.0.15
   google_fonts: ^3.0.1
+  http: ^0.13.4
+  path_provider: ^2.0.11
+  sqflite: ^2.0.2+1
+  path: ^1.8.1
+
 
 
 

@@ -114,21 +114,20 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: 140,
                         child: Row(
                           children: [
-                            Center(
-                              child: Padding(
-                                padding: EdgeInsets.all(15),
-                                child: Expanded(
+                            Expanded(flex: 1,
+                              child: Center(
+                                child: Padding(
+                                  padding: EdgeInsets.all(15),
                                   child: Container(
                                     decoration: BoxDecoration(gradient: LinearGradient(colors: [Colors.white12,Colors.white24])),
                                     child: Image.asset(
                                       'assets/images/amembericon.png',height: 50,
                                     ),
                                   ),
-                                  flex: 2,
                                 ),
                               ),
                             ),
-                            Expanded(
+                            Expanded(flex: 3,
                                 child: Container(
                               padding: EdgeInsets.only(left: 24),
                               child: ListTile(
@@ -155,18 +154,19 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: 140,
                         child: Row(
                           children: [
-                            Center(
-                              child: Padding(
-                                padding: EdgeInsets.all(15),
-                                child: Expanded(
+                            Expanded(
+                              flex: 1,
+                              child: Center(
+                                child: Padding(
+                                  padding: EdgeInsets.all(15),
                                   child: Image.asset(
                                     'assets/images/membersicon.png',
                                   ),
-                                  flex: 2,
                                 ),
                               ),
                             ),
                             Expanded(
+                              flex: 3,
                                 child: Container(
                               padding: EdgeInsets.only(left: 24),
                               child: ListTile(
@@ -193,18 +193,19 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: 140,
                         child: Row(
                           children: [
-                            Center(
-                              child: Padding(
-                                padding: EdgeInsets.all(15),
-                                child: Expanded(
+                            Expanded(
+                              flex: 1,
+                              child: Center(
+                                child: Padding(
+                                  padding: EdgeInsets.all(15),
                                   child: Image.asset(
                                     'assets/images/planicon.png',
                                   ),
-                                  flex: 2,
                                 ),
                               ),
                             ),
                             Expanded(
+                              flex: 3,
                                 child: Container(
                               padding: EdgeInsets.only(left: 24),
                               child: ListTile(

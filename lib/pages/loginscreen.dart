@@ -4,6 +4,7 @@ import 'package:gym_management/pages/homebottomNavigationbar.dart';
 import 'package:gym_management/pages/homescreen.dart';
 import 'package:gym_management/pages/signup.dart';
 
+
 void main() {
   runApp(MaterialApp(
     home: LoginScreen(),
@@ -17,9 +18,17 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
+
 class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController emailcontroller = TextEditingController();
+  final TextEditingController passwordcontroller = TextEditingController();
   var _formKey = GlobalKey<FormState>();
   var isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,6 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 20.0,
                     ),
                     TextFormField(
+                      controller: emailcontroller,
                       decoration: InputDecoration(
                         hintText: 'Email',
                         suffixIcon: Icon(
@@ -91,6 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 17,
                     ),
                     TextFormField(
+                      controller: passwordcontroller,
                       obscureText: true,
                       decoration: InputDecoration(
                           hintText: 'Password',
@@ -115,16 +126,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     GestureDetector(
                       onTap: () {
-                                final isValidForm =
-                                    _formKey.currentState!.validate();
-                                if (isValidForm) {
-                                  Navigator.of(context).push(
-                                    MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          const BottomNavigationbar(),
-                                    ),
-                                  );
-                                }
+                        final isValidForm = _formKey.currentState!.validate();
+                        if (isValidForm) {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  const BottomNavigationbar(),
+                            ),
+                          );
+                        }
                       },
                       child: Container(
                         height: 50.0,
