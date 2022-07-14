@@ -24,7 +24,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Home'),
+          title: Text('Home',style: GoogleFonts.roboto(
+                                        fontSize: 35,
+                                        fontWeight: FontWeight.bold)),
           //    actions: [
           //   IconButton(
           //     onPressed: () {},
@@ -118,11 +120,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: Center(
                                 child: Padding(
                                   padding: EdgeInsets.all(15),
-                                  child: Container(
-                                    decoration: BoxDecoration(gradient: LinearGradient(colors: [Colors.white12,Colors.white24])),
-                                    child: Image.asset(
-                                      'assets/images/amembericon.png',height: 50,
-                                    ),
+                                  child: Image.asset(
+                                    'assets/images/addmembericon44.png',height: 50,
                                   ),
                                 ),
                               ),
@@ -132,8 +131,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               padding: EdgeInsets.only(left: 24),
                               child: ListTile(
                                 title: Text('Add member',
-                                    style: GoogleFonts.caveat(
-                                        fontSize: 35,
+                                    style: GoogleFonts.roboto(
+                                        fontSize: 25,
                                         fontWeight: FontWeight.bold)),
                               ),
                             )),
@@ -160,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Padding(
                                   padding: EdgeInsets.all(15),
                                   child: Image.asset(
-                                    'assets/images/membersicon.png',
+                                    'assets/images/membersicon44.png',
                                   ),
                                 ),
                               ),
@@ -171,8 +170,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               padding: EdgeInsets.only(left: 24),
                               child: ListTile(
                                 title: Text('Members',
-                                    style: GoogleFonts.caveat(
-                                        fontSize: 35,
+                                    style: GoogleFonts.roboto(
+                                        fontSize: 25,
                                         fontWeight: FontWeight.bold)),
                               ),
                             )),
@@ -199,7 +198,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Padding(
                                   padding: EdgeInsets.all(15),
                                   child: Image.asset(
-                                    'assets/images/planicon.png',
+                                    'assets/images/packageicon44.png',
                                   ),
                                 ),
                               ),
@@ -210,8 +209,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               padding: EdgeInsets.only(left: 24),
                               child: ListTile(
                                 title: Text('Package',
-                                    style: GoogleFonts.caveat(
-                                        fontSize: 35,
+                                    style: GoogleFonts.roboto(
+                                        fontSize: 25,
                                         fontWeight: FontWeight.bold)),
                               ),
                             )),

@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen>
           Image.asset('assets/images/splash1.png'),
           const Text(
             'Gym Manager app',
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold,color: Colors.black),
           )
         ],
       ),

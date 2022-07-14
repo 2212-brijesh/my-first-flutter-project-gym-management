@@ -4,7 +4,6 @@ import 'package:gym_management/pages/homebottomNavigationbar.dart';
 import 'package:gym_management/pages/homescreen.dart';
 import 'package:gym_management/pages/signup.dart';
 
-
 void main() {
   runApp(MaterialApp(
     home: LoginScreen(),
@@ -17,7 +16,6 @@ class LoginScreen extends StatefulWidget {
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
-
 
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailcontroller = TextEditingController();
@@ -54,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         bottom: 20.0,
                         child: Text(
                           'Login',
-                          style: GoogleFonts.caveat(
+                          style: GoogleFonts.roboto(
                               color: Colors.white,
                               fontSize: 42.0,
                               letterSpacing: 1.5,
@@ -73,53 +71,67 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(
                       height: 20.0,
                     ),
-                    TextFormField(
-                      controller: emailcontroller,
-                      decoration: InputDecoration(
-                        hintText: 'Email',
-                        suffixIcon: Icon(
-                          Icons.email,
-                          color: Colors.black,
-                        ),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0)),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.grey[700]!.withOpacity(0.5),
+                        borderRadius: BorderRadius.circular(16),
                       ),
-                      keyboardType: TextInputType.emailAddress,
-                      onFieldSubmitted: (value) {
-                        //Validator
-                      },
-                      validator: (value) {
-                        if (value!.isEmpty ||
-                            !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                .hasMatch(value)) {
-                          return 'Enter a valid email!';
-                        }
-                        return null;
-                      },
+                      child: TextFormField(
+                        controller: emailcontroller,
+                        decoration: InputDecoration(
+                          hintText: 'Email',
+                          hintStyle: TextStyle(color: Colors.white70),
+                          suffixIcon: Icon(
+                            Icons.email,
+                            color: Colors.white,
+                          ),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0)),
+                        ),
+                        keyboardType: TextInputType.emailAddress,
+                        onFieldSubmitted: (value) {
+                          //Validator
+                        },
+                        validator: (value) {
+                          if (value!.isEmpty ||
+                              !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                  .hasMatch(value)) {
+                            return 'Enter a valid email!';
+                          }
+                          return null;
+                        },
+                      ),
                     ),
                     const SizedBox(
                       height: 17,
                     ),
-                    TextFormField(
-                      controller: passwordcontroller,
-                      obscureText: true,
-                      decoration: InputDecoration(
-                          hintText: 'Password',
-                          suffixIcon: Icon(
-                            Icons.visibility_off,
-                            color: Colors.black,
-                          ),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20.0))),
-                      keyboardType: TextInputType.emailAddress,
-                      validator: (value) {
-                        if (value!.isEmpty ||
-                            !RegExp(r"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$")
-                                .hasMatch(value)) {
-                          return 'Please Enter Your Password';
-                        }
-                        return null;
-                      },
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.grey[700]!.withOpacity(0.5),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: TextFormField(
+                        controller: passwordcontroller,
+                        obscureText: true,
+                        decoration: InputDecoration(
+                            hintText: 'Password',
+                            hintStyle: TextStyle(color: Colors.white70),
+                            suffixIcon: Icon(
+                              Icons.visibility_off,
+                              color: Colors.white,
+                            ),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20.0))),
+                        keyboardType: TextInputType.emailAddress,
+                        validator: (value) {
+                          if (value!.isEmpty ||
+                              !RegExp(r"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$")
+                                  .hasMatch(value)) {
+                            return 'Please Enter Your Password';
+                          }
+                          return null;
+                        },
+                      ),
                     ),
                     const SizedBox(
                       height: 17,

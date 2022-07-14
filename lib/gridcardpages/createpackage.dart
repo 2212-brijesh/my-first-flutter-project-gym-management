@@ -42,6 +42,7 @@ class _CreatePackageState extends State<CreatePackage> {
           child: Form(
             key: _formKey,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextFormField(
                   decoration: InputDecoration(
@@ -60,7 +61,7 @@ class _CreatePackageState extends State<CreatePackage> {
                   },                  
                 ),
                 SizedBox(
-                  height: 15,
+                  height: 18,
                 ),
                 TextFormField(
                   decoration: InputDecoration(
@@ -79,39 +80,43 @@ class _CreatePackageState extends State<CreatePackage> {
                   },                     
                 ),
                 SizedBox(
-                  height: 15,
+                  height: 18,
                 ),
-                StatefulBuilder(builder: (context, setState) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      ListTile(
-                        leading: Radio<String>(
-                          value: 'days',
-                          groupValue: _selectedDaysMonths,
-                          onChanged: (value) {
-                            setState(() {
-                              _selectedDaysMonths = value!;
-                            });
-                          },
-                        ),
-                        title: const Text('Days'),
-                      ),
-                      ListTile(
-                        leading: Radio<String>(
-                          value: 'months',
-                          groupValue: _selectedDaysMonths,
-                          onChanged: (value) {
-                            setState(() {
-                              _selectedDaysMonths = value!;
-                            });
-                          },
-                        ),
-                        title: const Text('Months'),
-                      ),
-                    ],
-                  );
-                }),
+                // StatefulBuilder(builder: (context, setState) {
+                //   return Column(
+                //     crossAxisAlignment: CrossAxisAlignment.start,
+                //     children: <Widget>[
+                //       // ListTile(
+                //       //   leading: Radio<String>(
+                //       //     value: 'days',
+                //       //     groupValue: _selectedDaysMonths,
+                //       //     onChanged: (value) {
+                //       //       setState(() {
+                //       //         _selectedDaysMonths = value!;
+                //       //       });
+                //       //     },
+                //       //   ),
+                //       //   title: const Text('Days'),
+                //       // ),
+                //       ListTile(
+                //         leading: Radio<String>(
+                //           value: 'months',
+                //           groupValue: _selectedDaysMonths,
+                //           onChanged: (value) {
+                //             setState(() {
+                //               _selectedDaysMonths = value!;
+                //             });
+                //           },
+                //         ),
+                //         title: const Text('Months'),
+                //       ),
+                //     ],
+                //   );
+                // }),
+                const Text('Months :-',textAlign: TextAlign.right,style: TextStyle(fontSize: 18,),),
+                const SizedBox(
+                  height: 18,
+                ),
                 TextFormField(
                   decoration: InputDecoration(
                     hintText: 'Duration',
@@ -127,7 +132,7 @@ class _CreatePackageState extends State<CreatePackage> {
                     return null;
                   },                  
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 TextFormField(

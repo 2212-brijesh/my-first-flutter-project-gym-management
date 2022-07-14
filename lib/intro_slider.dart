@@ -40,26 +40,26 @@ class _IntroSliderState extends State<IntroSlider> {
       // debugShowCheckedModeBanner: false,      
       home: 
     Scaffold(
-      body: Container(
+      body: Container( 
         padding: const EdgeInsets.only(bottom: 80),
         child: PageView(
           controller: controller,
           children: [
             buildPage(
                 color: Colors.blue.shade100,
-                urlImage: 'assets/images/gymslide11.png',
+                urlImage: 'assets/images/addmembers22.png',
                 title: 'ADD MEMBERS',
                 subtitle:
                     'Member List Filter By(Active,inActive)\nAttendance\nIntegrated SMS Panel\nManage By Batch'),
             buildPage(
-                color: Colors.blueGrey.shade100,
-                urlImage: 'assets/images/gymslide2.png',
+                color: Color.fromARGB(255, 165, 187, 194),
+                urlImage: 'assets/images/dashboard33.png',
                 title: 'DASHBOARD',
                 subtitle:
                     'Member UpComing Expiry Report By (1-3 Days,4-7 Days,7-15 Days)\nToday Report\nMembership Expiry Today\nMember Registration Report'),
             buildPage(
                 color: Colors.green.shade100,
-                urlImage: 'assets/images/gymslide33.png',
+                urlImage: 'assets/images/manage22.png',
                 title: 'MANAGE',
                 subtitle:
                     'Manage Enquiry\nManage Staff & Trainer\nManage Gym Expense\nAdditional Features'),
@@ -80,7 +80,7 @@ class _IntroSliderState extends State<IntroSlider> {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => SignUp()));
                   },
-                  child: const Text('Sign Up',style: TextStyle(color: Colors.white),)),
+                  child: const Text('Register',style: TextStyle(color: Colors.white),)),
               Center(
                 child: SmoothPageIndicator(
                   controller: controller,
@@ -121,19 +121,24 @@ Widget buildPage({
       color: color,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Image.asset(
-            urlImage,
-            fit: BoxFit.cover,
-            width: double.infinity,
+          Align(
+            alignment: Alignment.center,
+            child: Image.asset(
+              urlImage,
+              fit: BoxFit.cover,
+              width: double.infinity,
+            ),
           ),
-          const SizedBox(
-            height: 64,
-          ),
+          // const SizedBox(
+          //   height: 64,
+          // ),
           Text(
             title,
+            textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.teal.shade700,
+              color: Colors.black,
               fontSize: 32,
               fontWeight: FontWeight.bold,
             ),
@@ -143,9 +148,15 @@ Widget buildPage({
           ),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: Text(
-              subtitle,
-              style: const TextStyle(color: Colors.black54, fontSize: 18),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Align(
+                alignment: Alignment.center,
+                child: Text(textAlign: TextAlign.center,
+                  subtitle,
+                  style: const TextStyle(color: Colors.black54, fontSize: 18),
+                ),
+              ),
             ),
           ),
         ],
